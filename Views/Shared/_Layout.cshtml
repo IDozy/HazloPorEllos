@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HazloPorEllosMVC</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/stylest.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/fortawesome/fontawesome-free/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/fortawesome/fontawesome-free/css/all.css" asp-append-version="true" />
+</head>
+<body>
+   
+    <div id="logo">
+        <a class="text-decoration-none white  " asp-area="" asp-controller="Home" asp-action="Index">
+            <div class="ml-5">
+                <img src="~/assets/icons/alojamiento-de-mascotas.png" width="100" height="100"   />
+            </div>
+            <div>
+                <h1 >  Hazlo <img src="~/assets/imgs/hueso.png" class="img-fluid"  width="40px" height="37px"/> Ellos</h1>
+            </div>
+        </a>
+
+    </div>
+    <div id="header">
+        <div class="wrapper">
+            <div class="menu_position ">
+                <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Albergue</a>
+                <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Blog</a>         
+                <a class="menu white" asp-area="" asp-controller="Home" asp-action="Index">Contacto</a>                     
+                <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Actividades</a>
+                <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Donaciones</a>
+                <partial name="_LoginPartial" />
+           </div>
+            <a href="javascript:mostrar();" class="icon_menu im_white" style="top: 5px;"></a>
+        </div>
+    </div>         
+
+    <div id="small_header" style="display: none;">
+        <div class="wrapper_nospace">
+            <a href="./">
+                <img id="logo_small" border="0" src="~/assets/icons/alojamiento-de-mascotas.png"  >
+            </a>
+            <div class="menu_position_small"> 
+                <a class=" menu black" asp-area="" asp-controller="Home" asp-action="Index">Albergue</a>
+                <a class=" menu black" asp-area="" asp-controller="Home" asp-action="Index">Blog</a>         
+                <a class="menu black" asp-area="" asp-controller="Home" asp-action="Index">Contacto</a>                     
+                <a class=" menu black" asp-area="" asp-controller="Home" asp-action="Index">Actividades</a>
+                <a class=" menu black" asp-area="" asp-controller="Home" asp-action="Index">Donaciones</a>
+            <partial name="_LoginPartial"/>
+            </div>
+        <a href="javascript:mostrar();" class="icon_menu im_black" style="top: 5px;"></a>
+        </div>
+    </div>
+
+    <div class="nav" style="right: -75%;">
+        <a href="javascript:ocultar();" class="icon_close"></a>
+        <div class="sidemenu">
+            <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Albergue</a>
+            <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Actividades</a>
+            <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Blog</a>         
+            <a class="menu white" asp-area="" asp-controller="Home" asp-action="Index">Contacto</a>                     
+            <a class=" menu white" asp-area="" asp-controller="Home" asp-action="Index">Donaciones</a>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+
+    <div id="banner_img"><img class="main_dogs" src="/assets/imgs/dog_home.png"></div>
+    
+    <div id="bg_home"></div>
+       
+    <div class="container">
+
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - HazloPorEllosMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/fortawesome/fontawesome-free/js/all.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103589822-1"></script>
+
+
+     <script type="text/javascript">
+	    jQuery(document).scroll(function () {
+        var y = jQuery(this).scrollTop();
+        if (y > 50) {
+                jQuery('#small_header').show();
+        } else {
+                jQuery('#small_header').hide();
+        }
+        });
+    </script>
+
+    <script type="text/javascript">
+        function mostrar() { 
+	        $(".nav").animate({"right":"0px"}, "fast");
+        }
+        function ocultar() {
+	        $(".nav").animate({"right":"-75%"}, "fast");
+        }
+        $(document).ready(function(e) {
+        $(".nav").mouseleave(function() {
+        	$(this).animate({"right":"-75%"}, "fast");
+  	        });
+        });
+        </script>
+
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
